@@ -129,3 +129,32 @@ p{
 .pricing-coloumn {
   padding: 3% 2%;
 }
+
+/* call to action section */
+
+#cta {
+  text-align: center;
+  background-color: #ff4c68;
+  padding: 7% 15%;
+}
+
+.find-dog {
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: 3.5rem;
+  line-height: 1.5;
+  color: white;
+}
+
+/* footer */
+
+#footer {
+  text-align: center;
+  padding: 7% 15%;
+}
+
+.copyright {
+  padding-top: 1%;
+}
+
+@media (max-width: 1028px) {
