@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const userSquares = [];
   const computerSquares = [];
   let isHorizontal = true;
+  let isGameOver = false;
+  let currentPlayer = "user";
 
   const width = 10;
 
@@ -307,5 +309,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function dragEnd() {
     console.log("dragend");
+  }
+
+  //Game logic
+
+  function playGame() {
+    if (isGameOver) return;
+    if (currentPlayer === "user") {
+      turnDisplay.innerHTML = "Your Go";
+      computerSquares.forEach((square) =>
+        square.addEventListener("click", function (e) {
+          revealSquare(square);
+        })
+      );
+    }
+    if (currentPlayer === "computer") {
+      turnDisplay.innerHTML = "Computers Go";
+      setTimeout(computerGo, 1000);
+    }
+  }
+  startButton.addEventListener("click", playGame);
+
+  let destroyerCount = 0;
+  let frigateCount = 0;
+  let cruiserCount = 0;
+  let battleshipCount = 0;
+  let carrierCount = 0;
+
+  function revealSquare(square) {
+    if (!square.classList.contains("boom")) {
+      if (square.classList.contains("destroyer")) destroyerCount++;
+      if (square.classList.contains("frigate")) frigateCount++;
+      if (square.classList.contains("cruiser")) cruiserCount++;
+      if (square.classList.contains("battleship")) battleshipCount++;
+      if (square.classList.contains("carrier")) carrierCount++;
+    }
+    if (square.classList.contains("taken")) {
+      square.classList.add("boom");
+    } else {
+      square.classList.add("miss");
+    }
+    currentPlayer = "computer";
+    playGame();
+  }
+
+  let cpuDestroyerCount = 0;
+  let cpuFrigateCount = 0;
+  let cpuCruiserCount = 0;
+  let cpuBattleshipCount = 0;
+  let cpuCarrierCount = 0;
+
+  function computerGo() {
+    let random = Math.floor(Math.random() * userSquares.length);
+    if (!userSquares[random].classList.contains("boom")) {
+      userSquares[random].classList.add("boom");
+      if (userSquares[random].classList.contains("destroyer"))
+        cpuDestroyerCount++;
+      if (userSquares[random].classList.contains("frigate")) cpuFrigateCount++;
+      if (userSquares[random].classList.contains("cruiser")) cpuCruiserCount++;
+      if (userSquares[random].classList.contains("battleship"))
+        cpuBattleshipCount++;
+      if (userSquares[random].classList.contains("carrier")) cpuCarrierCount++;
+    } else computerGo();
+    currentPlayer = "user";
+    turnDisplay.innerHTML = "Your Go";
   }
 });
