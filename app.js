@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const userGrid = document.querySelector(".grid-user");
   const computerGrid = document.querySelector(".grid-computer");
-  const displayGrid = document.querySelector("grid-display");
+  const displayGrid = document.querySelector(".grid-display");
   const ships = document.querySelectorAll(".ship");
-  const destroyer = document.querySelector(".destroy-container");
-  const frigate = document.querySelector(".frigate-container");
+  const destroyer = document.querySelector(".destroyer-container");
+  const submarine = document.querySelector(".submarine-container");
   const cruiser = document.querySelector(".cruiser-container");
   const battleship = document.querySelector(".battleship-container");
   const carrier = document.querySelector(".carrier-container");
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const infoDisplay = document.querySelector("#info");
   const userSquares = [];
   const computerSquares = [];
+  let isHorizontal = true;
 
   const width = 10;
 
@@ -105,4 +106,13 @@ document.addEventListener("DOMContentLoaded", () => {
   generate(shipArray[2]);
   generate(shipArray[3]);
   generate(shipArray[4]);
+
+  // rotate the ships
+  function rotate() {
+    if (isHorizontal) {
+      destroyer.classList.toggle("destroyer-container-vertical");
+      isHorizontal = false;
+    }
+  }
+  rotateButton.addEventListener("click", rotate);
 });
