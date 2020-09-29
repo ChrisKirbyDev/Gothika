@@ -161,7 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function dragStart() {
     draggedShip = this;
-    draggedShipLength = this.childNodes.length;
+    draggedShipLength = document.querySelectorAll(
+      `.${draggedShip.classList[1]} > * `
+    ).length;
     console.log(draggedShip);
   }
 
@@ -195,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
           parseInt(this.dataset.id) - selectedShipIndex + i
         ].classList.add("taken", shipClass);
       }
-    } else if (!Horizontal) {
+    } else if (!isHorizontal) {
       for (let i = 0; i < draggedShipLength; i++) {
         userSquares[
           parseInt(this.dataset.id) - selectedShipIndex + width * i
