@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayGrid = document.querySelector(".grid-display");
   const ships = document.querySelectorAll(".ship");
   const destroyer = document.querySelector(".destroyer-container");
-  const submarine = document.querySelector(".submarine-container");
+  const frigate = document.querySelector(".frigate-container");
   const cruiser = document.querySelector(".cruiser-container");
   const battleship = document.querySelector(".battleship-container");
   const carrier = document.querySelector(".carrier-container");
@@ -111,7 +111,23 @@ document.addEventListener("DOMContentLoaded", () => {
   function rotate() {
     if (isHorizontal) {
       destroyer.classList.toggle("destroyer-container-vertical");
+      frigate.classList.toggle("frigate-container-vertical");
+      cruiser.classList.toggle("cruiser-container-vertical");
+      battleship.classList.toggle("battleship-container-vertical");
+      carrier.classList.toggle("carrier-container-vertical");
       isHorizontal = false;
+      console.log(isHorizontal);
+      return;
+    }
+    if (!isHorizontal) {
+      destroyer.classList.toggle("destroyer-container-vertical");
+      frigate.classList.toggle("frigate-container-vertical");
+      cruiser.classList.toggle("cruiser-container-vertical");
+      battleship.classList.toggle("battleship-container-vertical");
+      carrier.classList.toggle("carrier-container-vertical");
+      isHorizontal = true;
+      console.log(isHorizontal);
+      return;
     }
   }
   rotateButton.addEventListener("click", rotate);
