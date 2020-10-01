@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPlayer = "user";
 
   const width = 10;
+  const socket = io();
 
   //Create Board
   function createBoard(grid, squares) {
