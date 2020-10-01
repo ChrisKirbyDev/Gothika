@@ -29,6 +29,11 @@ io.on("connection", (socket) => {
     }
   }
 
+  // Tell the connecting client what player number they are
+  socket.emit("player-number", playerIndex);
+
+  console.log(`Player ${playerIndex} has connected`);
+
   // Ignore player 3
   if (playerIndex === -1) return;
 });
