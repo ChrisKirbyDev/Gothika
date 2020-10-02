@@ -31,19 +31,31 @@ document.addEventListener("DOMContentLoaded", () => {
   singlePlayerButton.addEventListener("click", startSinglePlayer);
   multiPlayerButton.addEventListener("click", startMultiPlayer);
 
-  const socket = io();
+  // Multiplayer
 
-  // Get your player number
-  socket.on("player-number", (num) => {
-    if (num === -1) {
-      infoDisplay.innerHTML = "Sorry, the server is full";
-    } else {
-      playerNum = parseInt(num);
-      if (playerNum === 1) currentPlayer = "enemy";
+  function startMultiPlayer() {
+    gameMode = "multiPlayer";
 
-      console.log(playerNum);
-    }
-  });
+    const socket = io();
+
+    // Get your player number
+
+    socket.on("player-number", (num) => {
+      if (num === -1) {
+        infoDisplay.innerHTML = "Sorry, the server is full";
+      } else {
+        playerNum = parseInt(num);
+        if (playerNum === 1) currentPlayer = "enemy";
+
+        console.log(playerNum);
+      }
+    });
+
+    // Another player has connected or disconnected
+    socket.on("player-connection", (num) => {
+      console.log(`Player number ${num} has connected or disconnected`);
+    });
+  }
 
   // Single Player
   function startSinglePlayer() {
