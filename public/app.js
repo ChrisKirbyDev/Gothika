@@ -57,6 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
       playerConnectedOrDisconnected(num);
     });
 
+    // Ready button click
+    startButton.addEventListener("click", () => {
+      playGameMulti(socket);
+    });
+
     function playerConnectedOrDisconnected(num) {
       let player = `.p${parseInt(num) + 1}`;
       document
@@ -365,6 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else return;
 
     displayGrid.removeChild(draggedShip);
+    if (!displayGrid.querySelector(".ship")) allShipsPlaced = true;
   }
 
   function dragEnd() {
