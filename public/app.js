@@ -57,6 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
       playerConnectedOrDisconnected(num);
     });
 
+    // On enemy ready
+    socket.on("enemy-ready", (num) => {
+      enemyReady = true;
+      playerReady(num);
+      if (ready) playGameMulti(socket);
+    });
+
     // Ready button click
     startButton.addEventListener("click", () => {
       if (allShipsPlaced) playGameMulti(socket);
