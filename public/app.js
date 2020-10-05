@@ -396,6 +396,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  if (enemyReady) {
+    if (currentPlayer === "user") {
+      turnDisplay.innerHTML = "Your go";
+    }
+    if (curentPlayer === "enemy") {
+      turnDisplay.innetHTML = "Enemy's Go";
+    }
+  }
+
   function playerReady(num) {
     let player = `.p${parseInt(num) + 1}`;
     document.querySelector(`${player} . ready span`).classList.toggle("green");
