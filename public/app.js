@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (playerNum === 1) currentPlayer = "enemy";
 
         console.log(playerNum);
+
+        // Get other player status
+        socket.emit("check-players");
       }
     });
 
