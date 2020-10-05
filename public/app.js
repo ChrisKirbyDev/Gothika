@@ -378,7 +378,23 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("dragend");
   }
 
-  //Game logic
+  // Game Logic for Multiplayer
+
+  function playGameMulti(socket) {
+    if (isGameOver) return;
+    if (!ready) {
+      socket.emit("player-ready");
+      ready = true;
+      playerReady(playerNum);
+    }
+  }
+
+  function playerReady(num) {
+    let player = `.p${parseInt(num) + 1}`;
+    document.querySelector(`${player} . ready span`).classList.toggle("green");
+  }
+
+  // Game logic for Single Player
 
   function playGameSingle() {
     if (isGameOver) return;
