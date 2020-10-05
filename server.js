@@ -50,4 +50,10 @@ io.on("connection", (socket) => {
     // Tell everyone what player number has just disconnected
     socket.broadcast.emit("player-connection", playerIndex);
   });
+
+  // On Ready
+  socket.on("player-ready", () => {
+    socket.broadcast.emit("enemy-ready", playerIndex);
+    connections[playerIndex] = true;
+  });
 });
