@@ -71,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
     socket.on("check-players", (players) => {
       players.forEach((p, i) => {
         if (p.connected) playerConnectedOrDisconnected(i);
+        if (p.ready) {
+          playerReady(i);
+          if (i !== playerReady) enemyReady = true;
+        }
       });
     });
 
@@ -417,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function playerReady(num) {
     let player = `.p${parseInt(num) + 1}`;
-    document.querySelector(`${player} . ready span`).classList.toggle("green");
+    document.querySelector(`${player} .ready span`).classList.toggle("green");
   }
 
   // Game logic for Single Player
