@@ -85,14 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Setup event listeners for firing
-    computerSquares.forEach(square => {
-      square.addEventListener('click', () => {
-        if(currentPlayer === 'user' && ready && enemyReady) {
-          shotFired = square.dataset.id
-          socket.emit('fire', shotFired)
+    computerSquares.forEach((square) => {
+      square.addEventListener("click", () => {
+        if (currentPlayer === "user" && ready && enemyReady) {
+          shotFired = square.dataset.id;
+          socket.emit("fire", shotFired);
         }
-      })
-    })
+      });
+    });
+
+    // On Fire Received
+    socket.on("fire", (id) => {
+      enemyGo(id);
+      const square = userSquares[id];
+      socketemit("fire-reply", square.classList);
+      playGameMulti(socket);
+    });
 
     function playerConnectedOrDisconnected(num) {
       let player = `.p${parseInt(num) + 1}`;
