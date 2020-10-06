@@ -493,15 +493,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function enemyGo(square) {
     if (gameMode === "singlePlayer")
       square = Math.floor(Math.random() * userSquares.length);
-    if (!userSquares[random].classList.contains("boom")) {
-      userSquares[random].classList.add("boom");
-      if (userSquares[random].classList.contains("destroyer"))
+    if (!userSquares[square].classList.contains("boom")) {
+      userSquares[square].classList.add("boom");
+      if (userSquares[square].classList.contains("destroyer"))
         cpuDestroyerCount++;
-      if (userSquares[random].classList.contains("frigate")) cpuFrigateCount++;
-      if (userSquares[random].classList.contains("cruiser")) cpuCruiserCount++;
-      if (userSquares[random].classList.contains("battleship"))
+      if (userSquares[square].classList.contains("frigate")) cpuFrigateCount++;
+      if (userSquares[square].classList.contains("cruiser")) cpuCruiserCount++;
+      if (userSquares[square].classList.contains("battleship"))
         cpuBattleshipCount++;
-      if (userSquares[random].classList.contains("carrier")) cpuCarrierCount++;
+      if (userSquares[square].classList.contains("carrier")) cpuCarrierCount++;
       checkForWins();
     } else if (gameMode === "singlePlayer") enemyGo();
     currentPlayer = "user";
