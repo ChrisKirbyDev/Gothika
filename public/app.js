@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (currentPlayer === "computer") {
       turnDisplay.innerHTML = "Computers Go";
-      setTimeout(computerGo, 1000);
+      setTimeout(enemyGo, 1000);
     }
   }
   startButton.addEventListener("click", playGameSingle);
@@ -490,8 +490,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let cpuBattleshipCount = 0;
   let cpuCarrierCount = 0;
 
-  function computerGo() {
-    let random = Math.floor(Math.random() * userSquares.length);
+  function enemyGo(square) {
+    if (gameMode === "singlePlayer")
+      square = Math.floor(Math.random() * userSquares.length);
     if (!userSquares[random].classList.contains("boom")) {
       userSquares[random].classList.add("boom");
       if (userSquares[random].classList.contains("destroyer"))
@@ -502,7 +503,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cpuBattleshipCount++;
       if (userSquares[random].classList.contains("carrier")) cpuCarrierCount++;
       checkForWins();
-    } else computerGo();
+    } else enemyGo();
     currentPlayer = "user";
     turnDisplay.innerHTML = "Your Go";
   }
