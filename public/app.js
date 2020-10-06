@@ -503,7 +503,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cpuBattleshipCount++;
       if (userSquares[random].classList.contains("carrier")) cpuCarrierCount++;
       checkForWins();
-    } else enemyGo();
+    } else if (gameMode === "singlePlayer") enemyGo();
     currentPlayer = "user";
     turnDisplay.innerHTML = "Your Go";
   }
