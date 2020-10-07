@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
       );
     }
-    if (currentPlayer === "computer") {
+    if (currentPlayer === "enemy") {
       turnDisplay.innerHTML = "Computers Go";
       setTimeout(enemyGo, 1000);
     }
