@@ -39,7 +39,6 @@
   margin: 10px;
   display: flex;
 }
-
 .destroyer-container-vertical {
   width: 40px;
   height: 80px;
@@ -49,7 +48,7 @@
   flex-wrap: wrap;
 }
 
-.frigate-container {
+.submarine-container {
   width: 120px;
   height: 40px;
   background-color: pink;
@@ -57,7 +56,7 @@
   display: flex;
 }
 
-.frigate-container-vertical {
+.submarine-container-vertical {
   width: 40px;
   height: 120px;
   background-color: pink;
@@ -100,6 +99,7 @@
   flex-wrap: wrap;
 }
 
+
 .carrier-container {
   width: 200px;
   height: 40px;
@@ -117,6 +117,7 @@
   flex-wrap: wrap;
 }
 
+
 .ship div {
   width: 40px;
   height: 40px;
@@ -126,7 +127,7 @@
   background-color: orange;
 }
 
-.frigate {
+.submarine {
   background-color: pink;
 }
 
@@ -147,11 +148,10 @@
 }
 
 .miss {
-  background-color: black;
+   background-color: black;
 }
 
-.connected,
-.ready {
+.connected, .ready {
   font-weight: normal;
 }
 
