@@ -78,6 +78,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    // On Timeout
+    socket.on('timeout', () => {
+      infoDisplay.innerHTML = 'You have reached the 10 minute limit'
+    })
+
     // Ready button click
     startButton.addEventListener("click", () => {
       if (allShipsPlaced) playGameMulti(socket);
