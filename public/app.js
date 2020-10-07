@@ -102,6 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
       playGameMulti(socket);
     });
 
+    // On Fire Reply Received 
+    socket.on('fire-reply', classList => {
+      revealSquare(classList)
+      playGameMulti(socket)
+    })
+
     function playerConnectedOrDisconnected(num) {
       let player = `.p${parseInt(num) + 1}`;
       document
@@ -450,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
       turnDisplay.innerHTML = "Your Go";
       computerSquares.forEach((square) =>
         square.addEventListener("click", function (e) {
-          revealSquare(square);
+          revealSquare(square.classList);
         })
       );
     }
@@ -467,21 +473,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let battleshipCount = 0;
   let carrierCount = 0;
 
-  function revealSquare(square) {
-    if (!square.classList.contains("boom")) {
-      if (square.classList.contains("destroyer")) destroyerCount++;
-      if (square.classList.contains("frigate")) frigateCount++;
-      if (square.classList.contains("cruiser")) cruiserCount++;
-      if (square.classList.contains("battleship")) battleshipCount++;
-      if (square.classList.contains("carrier")) carrierCount++;
+  function revealSquare(classList) {
+    const enemySquare = computerGrid.classList.querySelector(`div[data-id="${shotFired}"]`)
+    const obj = Object.values(classList)
+    if (!obj.classList.contains("boom") && currentPlayer === 'user' && !isGameOver) {
+      if (obj.classList.contains("destroyer")) destroyerCount++;
+      if (obj.classList.contains("frigate")) frigateCount++;
+      if (obj.classList.contains("cruiser")) cruiserCount++;
+      if (obj.classList.contains("battleship")) battleshipCount++;
+      if (obj.classList.contains("carrier")) carrierCount++;
     }
-    if (square.classList.contains("taken")) {
-      square.classList.add("boom");
+    if (obj.classList.contains("taken")) {
+      enemySquare.classList.add("boom");
     } else {
-      square.classList.add("miss");
+      enemySquare.classList.add("miss");
     }
-    currentPlayer = "computer";
-    playGameSingle();
+    currentPlayer = "enemy";
+    if(gameMode === 'singlePlayer')playGameSingle();
   }
 
   let cpuDestroyerCount = 0;
