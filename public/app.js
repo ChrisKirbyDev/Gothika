@@ -476,14 +476,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function revealSquare(classList) {
     const enemySquare = computerGrid.classList.querySelector(`div[data-id="${shotFired}"]`)
     const obj = Object.values(classList)
-    if (!obj.classList.contains("boom") && currentPlayer === 'user' && !isGameOver) {
-      if (obj.classList.contains("destroyer")) destroyerCount++;
-      if (obj.classList.contains("frigate")) frigateCount++;
-      if (obj.classList.contains("cruiser")) cruiserCount++;
-      if (obj.classList.contains("battleship")) battleshipCount++;
-      if (obj.classList.contains("carrier")) carrierCount++;
+    if (!obj.classList.includes("boom") && currentPlayer === 'user' && !isGameOver) {
+      if (obj.classList.includes("destroyer")) destroyerCount++;
+      if (obj.classList.includes("frigate")) frigateCount++;
+      if (obj.classList.includes("cruiser")) cruiserCount++;
+      if (obj.classList.includes("battleship")) battleshipCount++;
+      if (obj.classList.includes("carrier")) carrierCount++;
     }
-    if (obj.classList.contains("taken")) {
+    if (obj.classList.includes("taken")) {
       enemySquare.classList.add("boom");
     } else {
       enemySquare.classList.add("miss");
