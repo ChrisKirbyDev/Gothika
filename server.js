@@ -11,14 +11,13 @@ const io = socketio(server);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Start server
-server.listen(PORT, () => console.log(`Server Running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // Handle a socket connection request from web client
-
 const connections = [null, null];
 
 io.on("connection", (socket) => {
-  //   console.log("New WS Connection");
+  // console.log('New WS Connection')
 
   // Find an available player number
   let playerIndex = -1;
@@ -39,15 +38,14 @@ io.on("connection", (socket) => {
 
   connections[playerIndex] = false;
 
-  // Tell everyone what player number just connected
-
+  // Tell eveyone what player number just connected
   socket.broadcast.emit("player-connection", playerIndex);
 
-  // Handle Disconnect
+  // Handle Diconnect
   socket.on("disconnect", () => {
     console.log(`Player ${playerIndex} disconnected`);
     connections[playerIndex] = null;
-    //Tell everyone what player number just disconnected
+    //Tell everyone what player numbe just disconnected
     socket.broadcast.emit("player-connection", playerIndex);
   });
 
@@ -77,10 +75,17 @@ io.on("connection", (socket) => {
   });
 
   // on Fire Reply
-  socket.on('fire-reply', square => {
-    console.log(square)
+  socket.on("fire-reply", (square) => {
+    console.log(square);
 
     // Forward the reply to the other player
-    socket.broadcast.emit('fire-reply', square)
-  })
+    socket.broadcast.emit("fire-reply", square);
+  });
+
+    // Timeout connection
+    setTimeout(() => {
+      connections[playerIndex] = null
+      socket.emit('timeout')
+      socket.disconnect()
+    }, 600000) // 10 minute limit per player
 });
