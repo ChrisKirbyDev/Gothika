@@ -70,7 +70,7 @@ io.on("connection", (socket) => {
 
   // On Fire Received
   socket.on("fire", (id) => {
-    console.log("Shot fired from ${playerIndex}", id);
+    console.log(`Shot fired from ${playerIndex}`, id);
 
     // Emit the move to the other player
     socket.broadcast.emit("fire", id);
