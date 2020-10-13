@@ -30,6 +30,13 @@ body {
   outline: none;
   border: none;
   text-decoration: none;
+  cursor: pointer;
+  border-radius: .2em;
+  color: #333;
+}
+
+.btn:hover, .btn:focus {
+  background-color: hasl(30,100%, 40%);
 }
 
 .splash-btn {
@@ -40,6 +47,24 @@ body {
 .splash-btn:first-child {
   margin-left: 0;
 }
+
+.splash-btn:first-child {
+  margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .container {
   display: flex;
