@@ -24,57 +24,59 @@ document.addEventListener("DOMContentLoaded", () => {
   let allShipsPlaced = false;
   let shotFired = -1;
 
-    //Ships
-    const shipArray = [
-      {
-        name: "destroyer",
-        directions: [
-          [0, 1],
-          [0, width],
-        ],
-      },
-      {
-        name: "submarine",
-        directions: [
-          [0, 1, 2],
-          [0, width, width * 2],
-        ],
-      },
-      {
-        name: "cruiser",
-        directions: [
-          [0, 1, 2],
-          [0, width, width * 2],
-        ],
-      },
-      {
-        name: "battleship",
-        directions: [
-          [0, 1, 2, 3],
-          [0, width, width * 2, width * 3],
-        ],
-      },
-      {
-        name: "carrier",
-        directions: [
-          [0, 1, 2, 3, 4],
-          [0, width, width * 2, width * 3, width * 4],
-        ],
-      },
-    ];
+  //Ships
+  const shipArray = [
+    {
+      name: "destroyer",
+      directions: [
+        [0, 1],
+        [0, width],
+      ],
+    },
+    {
+      name: "submarine",
+      directions: [
+        [0, 1, 2],
+        [0, width, width * 2],
+      ],
+    },
+    {
+      name: "cruiser",
+      directions: [
+        [0, 1, 2],
+        [0, width, width * 2],
+      ],
+    },
+    {
+      name: "battleship",
+      directions: [
+        [0, 1, 2, 3],
+        [0, width, width * 2, width * 3],
+      ],
+    },
+    {
+      name: "carrier",
+      directions: [
+        [0, 1, 2, 3, 4],
+        [0, width, width * 2, width * 3, width * 4],
+      ],
+    },
+  ];
+
+  createBoard(userGrid, userSquares);
+  createBoard(computerGrid, computerSquares);
 
   // Select Player Mode
   if (gameMode === "singlePlayer") {
-    startSinglePlayer()
+    startSinglePlayer();
   } else {
-    startMultiPlayer()
+    startMultiPlayer();
   }
   singlePlayerButton.addEventListener("click", startSinglePlayer);
   multiPlayerButton.addEventListener("click", startMultiPlayer);
 
   // Multiplayer
   function startMultiPlayer() {
-
     const socket = io();
 
     // Get your player number
@@ -161,8 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  
-
   // Single Player
   function startSinglePlayer() {
     generate(shipArray[0]);
@@ -183,8 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
       squares.push(square);
     }
   }
-  createBoard(userGrid, userSquares);
-  createBoard(computerGrid, computerSquares);
 
   //Draw the computers ships in random locations
   function generate(ship) {
