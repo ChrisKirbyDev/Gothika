@@ -1,5 +1,14 @@
 body {
-  font-family: 'Megrim', cursive;
+  margin: 0;
+  background-color: #f3f3f3;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  font-family: "Megrim", cursive;
+  box-sizing: border-box;
 }
 
 // New Styles Start
@@ -7,20 +16,15 @@ body {
 .splash-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 66vh;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.splash-title {
+  font-family: "Megrim", cursive;
+  font-size: 10rem;
+}
 
 // New Styles Start End
 
@@ -127,7 +131,6 @@ body {
   flex-wrap: wrap;
 }
 
-
 .carrier-container {
   width: 200px;
   height: 40px;
@@ -144,7 +147,6 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-
 
 .ship div {
   width: 40px;
@@ -176,10 +178,11 @@ body {
 }
 
 .miss {
-   background-color: black;
+  background-color: black;
 }
 
-.connected, .ready {
+.connected,
+.ready {
   font-weight: normal;
 }
 
