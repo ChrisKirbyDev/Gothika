@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const rotateButton = document.querySelector("#rotate");
   const turnDisplay = document.querySelector("#whose-go");
   const infoDisplay = document.querySelector("#info");
-  const singlePlayerButton = document.querySelector("#singlePlayerButton");
-  const multiPlayerButton = document.querySelector("#multiPlayerButton");
   const userSquares = [];
   const computerSquares = [];
   let isHorizontal = true;
@@ -27,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let shotFired = -1;
 
   // Select Player Mode
+  if (gameMode === "singlePlayer") {
+    startSinglePlayer()
+  } else {
+    startMultiPlayer()
+  }
   singlePlayerButton.addEventListener("click", startSinglePlayer);
   multiPlayerButton.addEventListener("click", startMultiPlayer);
 
