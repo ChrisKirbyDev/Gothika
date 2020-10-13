@@ -24,6 +24,45 @@ document.addEventListener("DOMContentLoaded", () => {
   let allShipsPlaced = false;
   let shotFired = -1;
 
+    //Ships
+    const shipArray = [
+      {
+        name: "destroyer",
+        directions: [
+          [0, 1],
+          [0, width],
+        ],
+      },
+      {
+        name: "submarine",
+        directions: [
+          [0, 1, 2],
+          [0, width, width * 2],
+        ],
+      },
+      {
+        name: "cruiser",
+        directions: [
+          [0, 1, 2],
+          [0, width, width * 2],
+        ],
+      },
+      {
+        name: "battleship",
+        directions: [
+          [0, 1, 2, 3],
+          [0, width, width * 2, width * 3],
+        ],
+      },
+      {
+        name: "carrier",
+        directions: [
+          [0, 1, 2, 3, 4],
+          [0, width, width * 2, width * 3, width * 4],
+        ],
+      },
+    ];
+
   // Select Player Mode
   if (gameMode === "singlePlayer") {
     startSinglePlayer()
@@ -122,6 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  
+
   // Single Player
   function startSinglePlayer() {
     generate(shipArray[0]);
@@ -144,45 +185,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   createBoard(userGrid, userSquares);
   createBoard(computerGrid, computerSquares);
-
-  //Ships
-  const shipArray = [
-    {
-      name: "destroyer",
-      directions: [
-        [0, 1],
-        [0, width],
-      ],
-    },
-    {
-      name: "submarine",
-      directions: [
-        [0, 1, 2],
-        [0, width, width * 2],
-      ],
-    },
-    {
-      name: "cruiser",
-      directions: [
-        [0, 1, 2],
-        [0, width, width * 2],
-      ],
-    },
-    {
-      name: "battleship",
-      directions: [
-        [0, 1, 2, 3],
-        [0, width, width * 2, width * 3],
-      ],
-    },
-    {
-      name: "carrier",
-      directions: [
-        [0, 1, 2, 3, 4],
-        [0, width, width * 2, width * 3, width * 4],
-      ],
-    },
-  ];
 
   //Draw the computers ships in random locations
   function generate(ship) {
