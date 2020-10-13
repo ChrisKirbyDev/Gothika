@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let isGameOver = false;
   let currentPlayer = "user";
   const width = 10;
-  let gameMode = "";
   let playerNum = 0;
   let ready = false;
   let enemyReady = false;
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Multiplayer
   function startMultiPlayer() {
-    gameMode = "multiPlayer";
 
     const socket = io();
 
@@ -123,8 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Single Player
   function startSinglePlayer() {
-    gameMode = "singlePlayer";
-
     generate(shipArray[0]);
     generate(shipArray[1]);
     generate(shipArray[2]);
