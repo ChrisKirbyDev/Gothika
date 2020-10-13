@@ -2,6 +2,30 @@ body {
   font-family: 'Megrim', cursive;
 }
 
+// New Styles Start
+
+.splash-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// New Styles Start End
+
+// Old Styles Start
+
 .container {
   display: flex;
 }
@@ -170,3 +194,5 @@ body {
 span.green {
   background: green;
 }
+
+// Old Styles Start
