@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rotateButton = document.querySelector("#rotate");
   const turnDisplay = document.querySelector("#whose-go");
   const infoDisplay = document.querySelector("#info");
+  const setUpButtons = document.getElementById("setup-buttons");
   const userSquares = [];
   const computerSquares = [];
   let isHorizontal = true;
@@ -63,8 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  createBoard(userGrid, userSquares)
-  createBoard(computerGrid, computerSquares)
+  createBoard(userGrid, userSquares);
+  createBoard(computerGrid, computerSquares);
 
   // Select Player Mode
   if (gameMode === "singlePlayer") {
@@ -171,7 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
     generate(shipArray[3]);
     generate(shipArray[4]);
 
-    startButton.addEventListener("click", playGameSingle);
+    startButton.addEventListener("click", () => {
+      setUpButtons.style.display = "none";
+      playGameSingle();
+    });
   }
 
   //Create Board
