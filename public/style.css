@@ -73,6 +73,26 @@ body {
   background-color: hsl(0, 0%, 80%);
 }
 
+.taken.start.vertical {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.taken.end.vertical {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.taken.start.horizontal {
+  border-top-left-radius: 50%;
+  border-top-left-radius: 50%;
+}
+
+.taken.end.horizontal {
+  border-bottom-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
 .grid-display {
   display: flex;
 }
