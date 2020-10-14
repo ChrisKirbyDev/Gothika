@@ -105,7 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
     socket.on("enemy-ready", (num) => {
       enemyReady = true;
       playerReady(num);
-      if (ready) playGameMulti(socket);
+      if (ready) {
+        playGameMulti(socket);
+        setUpButtons.style.display = "none"
+      }
     });
 
     // Check player status
