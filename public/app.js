@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rotateButton = document.querySelector("#rotate");
   const turnDisplay = document.querySelector("#whose-go");
   const infoDisplay = document.querySelector("#info");
-  const setUpButtons = document.getElementById("setup-buttons");
+  const setupButtons = document.getElementById("setup-buttons");
   const userSquares = [];
   const computerSquares = [];
   let isHorizontal = true;
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let enemyReady = false;
   let allShipsPlaced = false;
   let shotFired = -1;
-
   //Ships
   const shipArray = [
     {
@@ -73,8 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     startMultiPlayer();
   }
-  singlePlayerButton.addEventListener("click", startSinglePlayer);
-  multiPlayerButton.addEventListener("click", startMultiPlayer);
 
   // Multiplayer
   function startMultiPlayer() {
@@ -107,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       playerReady(num);
       if (ready) {
         playGameMulti(socket);
-        setUpButtons.style.display = "none"
+        setupButtons.style.display = "none";
       }
     });
 
@@ -159,9 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function playerConnectedOrDisconnected(num) {
       let player = `.p${parseInt(num) + 1}`;
-      document
-        .querySelector(`${player} .connected span`)
-        .classList.toggle("green");
+      document.querySelector(`${player} .connected`).classList.toggle("active");
       if (parseInt(num) === playerNum)
         document.querySelector(player).style.fontWeight = "bold";
     }
@@ -176,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     generate(shipArray[4]);
 
     startButton.addEventListener("click", () => {
-      setUpButtons.style.display = "none";
+      setupButtons.style.display = "none";
       playGameSingle();
     });
   }
@@ -429,6 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Game Logic for MultiPlayer
   function playGameMulti(socket) {
+    setupButtons.style.display = "none";
     if (isGameOver) return;
     if (!ready) {
       socket.emit("player-ready");
@@ -448,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function playerReady(num) {
     let player = `.p${parseInt(num) + 1}`;
-    document.querySelector(`${player} .ready span`).classList.toggle("green");
+    document.querySelector(`${player} .ready`).classList.toggle("active");
   }
 
   // Game Logic for Single Player
@@ -511,7 +507,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (gameMode === "singlePlayer")
       square = Math.floor(Math.random() * userSquares.length);
     if (!userSquares[square].classList.contains("boom")) {
-      const hit = userSquares[square].classList.contains('taken')
+      const hit = userSquares[square].classList.contains("taken");
       userSquares[square].classList.add(hit ? "boom" : "miss");
       if (userSquares[square].classList.contains("destroyer"))
         cpuDestroyerCount++;
