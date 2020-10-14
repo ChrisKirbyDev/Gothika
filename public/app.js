@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  createBoard(userGrid, userSquares);
-  createBoard(computerGrid, computerSquares);
+  createBoard(userGrid, userSquares)
+  createBoard(computerGrid, computerSquares)
 
   // Select Player Mode
   if (gameMode === "singlePlayer") {
@@ -392,9 +392,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isHorizontal && !newNotAllowedHorizontal.includes(shipLastId)) {
       for (let i = 0; i < draggedShipLength; i++) {
-        let directionClass
-        if (i === 0) directionClass = "start"
-        if (i === draggedShipLength - 1) directionClass = "end"
+        let directionClass;
+        if (i === 0) directionClass = "start";
+        if (i === draggedShipLength - 1) directionClass = "end";
         userSquares[
           parseInt(this.dataset.id) - selectedShipIndex + i
         ].classList.add("taken", "horizontal", directionClass, shipClass);
@@ -403,9 +403,9 @@ document.addEventListener("DOMContentLoaded", () => {
       //index-1 , index-2 and so on, the ship will rebound back to the displayGrid.
     } else if (!isHorizontal && !newNotAllowedVertical.includes(shipLastId)) {
       for (let i = 0; i < draggedShipLength; i++) {
-        let directionClass
-        if (i === 0) directionClass = "start"
-        if (i === draggedShipLength - 1) directionClass = "end"
+        let directionClass;
+        if (i === 0) directionClass = "start";
+        if (i === draggedShipLength - 1) directionClass = "end";
         userSquares[
           parseInt(this.dataset.id) - selectedShipIndex + width * i
         ].classList.add("taken", "vertical", directionClass, shipClass);
