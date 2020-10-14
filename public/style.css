@@ -75,6 +75,7 @@ body {
 
 .taken,
 .ship {
+  position: relative;
   background-color: hsl(0, 0%, 80%);
 }
 
@@ -102,11 +103,21 @@ body {
 .taken.horizontal::before {
   content: "";
   position: absolute;
-  border: .3vmin solid white;
+  border: 0.3vmin solid white;
   top: -1px;
   bottom: -1px;
   left: -1px;
   right: -1px;
+}
+
+.taken.horizontal::before {
+  border-left: none;
+  border-right: none;
+}
+
+.taken.vertical::before {
+  border-top: none;
+  border-bottom: none;
 }
 
 .grid-display {
