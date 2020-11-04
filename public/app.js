@@ -531,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
       destroyerCount = 10;
     }
     if (submarineCount === 3) {
-      infoDisplay.innerHTML = `You sunk the ${enemy}'s submarine`;
+      infoDisplay.innerHTML = `You sunk the ${enemy}'s frigate`;
       submarineCount = 10;
     }
     if (cruiserCount === 3) {
@@ -551,7 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cpuDestroyerCount = 10;
     }
     if (cpuSubmarineCount === 3) {
-      infoDisplay.innerHTML = `${enemy} sunk your submarine`;
+      infoDisplay.innerHTML = `${enemy} sunk your frigate`;
       cpuSubmarineCount = 10;
     }
     if (cpuCruiserCount === 3) {
